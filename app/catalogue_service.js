@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const catalogue = [
-  "The True Catcher in the Rye by J.D. Salinger",
+  "The Catcher in the Rye by J.D. Salinger",
   "Dracula by Bram Stoker",
   "Between the Assassinations by Aravind Adiga",
   "Wolf Hall by Hilary Mantel",
@@ -19,7 +19,7 @@ const catalogue = [
   "Great Expectations by Charles Dickens",
   "The Blind Assassin by Margaret Atwood",
   "Why Be Happy When You Could Be Normal? by Jeanette Winterson",
-  "[1,2,3] The Origin of Species by Charles Darwin"
+  "The Origin of Species by Charles Darwin"
 ];
 
 function countBooks() {
@@ -46,11 +46,14 @@ function countBooksByFirstLetter(letter) {
   return count;
 }
 
-
 function countBooksByKeyword(keyword) {
   let total = 0;
   for(let i = 0; i < catalogue.length; i++) {
-    if(catalogue[i].toLowerCase().includes(keyword.toString().toLowerCase())) {
+    // First statement checks if the input is a string.
+    if (typeof keyword  != "string") {
+      return `You have entered a keyword of type ${typeof keyword} when a string was required`;
+    }
+    else if(catalogue[i].toLowerCase().includes(keyword.toLowerCase())) {
       total++;
     }
   }
@@ -58,8 +61,7 @@ function countBooksByKeyword(keyword) {
 }
 
 function getBooksByAuthor(author) {
-  const newArray = catalogue.filter(book => book.includes(author));
-  return newArray;
+  return newArray = catalogue.filter(book => book.includes(author));
 }
 
 module.exports = {

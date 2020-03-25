@@ -40,13 +40,13 @@ describe("catalogueService.countBooksByKeyword", () => {
     expect(catalogueService.countBooksByKeyword("blah")).toBe(0);
   });
   test("returns the number of books containing the given keyword", () => {
-    expect(catalogueService.countBooksByKeyword(2666)).toBe(1);
+    expect(catalogueService.countBooksByKeyword(2666)).toBe(`You have entered a keyword of type number when a string was required`);
   });
   test("returns the number of books containing the given keyword", () => {
-    expect(catalogueService.countBooksByKeyword(true)).toBe(1);
+    expect(catalogueService.countBooksByKeyword(true)).toBe(`You have entered a keyword of type boolean when a string was required`);
   });
   test("returns the number of books containing the given keyword", () => {
-    expect(catalogueService.countBooksByKeyword([1, 2, 3])).toBe(1);
+    expect(catalogueService.countBooksByKeyword([1, 2, 3])).toBe(`You have entered a keyword of type object when a string was required`);
   });
 });
 
@@ -57,5 +57,8 @@ describe("catalogueService.getBooksByAuthor", () => {
       "Oliver Twist by Charles Dickens",
       "Great Expectations by Charles Dickens"
     ]);
+  });
+  test("returns array of books by given author", () => {
+    expect(catalogueService.getBooksByAuthor("Stormzy")).toEqual([]);
   });
 });
